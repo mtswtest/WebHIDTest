@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', event => {
     let button = document.getElementById('ShowHIDDevices')
 	
-	let commandString = 'AA00810401001001843D100182013CA3098101018201018301018402000386279C01009F02060000000001009F03060000000000005F2A0208405F3601029F150200009F530100';
+	let commandString = 'AA0081040100DF018407DF018103414243';
 	let commandReport = hexStringToByte(commandString);
 
     button.addEventListener('click', async () => {
