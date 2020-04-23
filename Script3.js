@@ -7,7 +7,15 @@ document.addEventListener('DOMContentLoaded', event => {
     button.addEventListener('click', async () => {
 		let deviceFilter = { vendorId: 0x0801, productId: 0x2020 };
 		let requestParams  = { filters: [deviceFilter] };
-		let device = await navigator.hid.requestDevice(requestParams);
+		let device;
+
+		try {
+			const devices = await navigator.hid.requestDevice(requestParams);
+			device = devices[0];
+		  } catch (error) {
+			console.warn('No device access granted', error);
+			return;
+		  }
 		
 		console.log(device.vendorId); 
 		console.log(device.productId);
