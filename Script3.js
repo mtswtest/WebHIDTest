@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', event => {
 		device.open().then(() => {
 			console.log('Opened HID device');
 			device.addEventListener('inputreport', handleInputReport);
-			console.log(commandReport);
+			console.log(Sending: commandReport);
 			device.sendReport(0x00, commandReport).then(() => {
 				console.log('Sent command');
 			});
@@ -33,12 +33,12 @@ document.addEventListener('DOMContentLoaded', event => {
 
         console.log('done');
 		
-		device.close();
+
     })
 	
 	function handleInputReport(e) {
 		let responseValue = e.data;
-		console.log('Button value is ' + responseValue);
+		console.log('Device Response: ' + byteToHexString(responseValue));
 	}
 
 })
