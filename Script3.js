@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', event => {
 		device.open().then(() => {
 			console.log('Opened HID device');
 			device.addEventListener('inputreport', handleInputReport);
+			console.log(commandReport);
 			device.sendFeatureReport(0x00, commandReport).then(() => {
 				console.log('Sent command');
 			});
