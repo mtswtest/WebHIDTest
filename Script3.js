@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', event => {
 			device.addEventListener('inputreport', handleInputReport);
 			device.sendReport(0x00, commandReport).then(() => {
 				console.log('Sent command');
+			});
         });
 
         console.log('done');
@@ -23,6 +24,10 @@ document.addEventListener('DOMContentLoaded', event => {
 		let responseValue = e.data;
 		console.log('Button value is ' + responseValue);
 	}
+
+})
+
+
 	
 	function byteToHexString(uint8arr) {
 	  if (!uint8arr) {
@@ -51,6 +56,3 @@ document.addEventListener('DOMContentLoaded', event => {
 	  
 	  return new Uint8Array(a);
 	}
-})
-
-
