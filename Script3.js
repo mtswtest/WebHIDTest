@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', event => {
 	function handleInputReport(e) {
 		let responseValue = e.data;
 		console.log('Device Response: ' + responseValue);
-		console.log('Device Response: ' + byteToHexString(responseValue));
+		console.log('Device Response: ' + byteToHexString(responseValue.buffer));
 	}
 
 })
