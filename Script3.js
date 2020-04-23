@@ -39,8 +39,10 @@ document.addEventListener('DOMContentLoaded', event => {
 	function handleInputReport(e) {
 		let responseValue = e.data;
 		console.log('Device Response: ' + responseValue);
-				console.log('Length: ' + responseValue.byteLength);
-		console.log('Device Response: ' + byteToHexString(responseValue.buffer));
+		console.log('Length: ' + responseValue.byteLength);
+				
+		databuffer = new Uint8Array(responseValue.buffer);
+		console.log('Device Response: ' + byteToHexString(databuffer));
 	}
 
 })
