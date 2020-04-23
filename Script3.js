@@ -8,6 +8,11 @@ document.addEventListener('DOMContentLoaded', event => {
 		let deviceFilter = { vendorId: 0x0801, productId: 0x2020 };
 		let requestParams  = { filters: [deviceFilter] };
 		let device = await navigator.hid.requestDevice(requestParams);
+		
+		console.log(device.vendorId); 
+		console.log(device.productId);
+        console.log(device.productName);
+
 	
 		device.open().then(() => {
 			console.log('Opened HID device');
