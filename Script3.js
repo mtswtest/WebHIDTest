@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', event => {
     let button = document.getElementById('ShowHIDDevices')
 	
-	let commandString = '000011AA0081040100DF018407DF018103414243000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000';
+	let commandString = '0011AA0081040100DF018407DF018103414243000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000';
 	let commandReport = hexStringToByte(commandString);
 
     button.addEventListener('click', async () => {
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', event => {
 			console.log('Opened HID device');
 			device.addEventListener('inputreport', handleInputReport);
 			console.log('Sending: ' + commandReport);
-			device.sendReport(0x00, commandReport).then(() => {
+			device.sendFeatureReport(0x00, commandReport).then(() => {
 				console.log('Sent command');
 			});
         });
