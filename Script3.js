@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', event => {
 			console.log('Opened HID device');
 			device.addEventListener('inputreport', handleInputReport);
 			console.log('Sending: ' + commandReport);
-			device.sendReport(0x00, commandReport).then(() => {
+			device.mmxusbservice_sendData(device, commandReport).then(() => {
 				console.log('Sent command');
 			});
         });
