@@ -23,7 +23,7 @@ var mmxusbservice = (function () {
 
 	mmxusbservice.prototype.dispatchEvent = function(event) {
 		return eventTarget.dispatchEvent(event);
-	);
+	};
 	
 	mmxusbservice.prototype.removeEventListener = function(type, listener, useCapture) {
 		return eventTarget.removeEventListener(type, listener, useCapture);
