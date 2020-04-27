@@ -15,7 +15,7 @@ var mmxusbservice = (function () {
 		this.eventTarget = document.createDocumentFragment();
 		
 		this.device = null; 
-    }
+    };
 	
 	mmxusbservice.prototype.addEventListener = function(type, listener, useCapture, wantsUntrusted) {
 		return eventTarget.addEventListener(type, listener, useCapture, wantsUntrusted);
