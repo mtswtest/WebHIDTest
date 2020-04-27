@@ -1,7 +1,7 @@
 
-var MMXUSBService = (function () {
+var mmxusbservice = (function () {
 	
-    function MMXUSBService() {
+    function mmxusbservice() {
         this.PACKET_TYPE_SINGLE_DATA = 0;
         this.PACKET_TYPE_START_DATA = 1;
         this.PACKET_TYPE_CONTINUE_DATA = 2;
@@ -17,19 +17,19 @@ var MMXUSBService = (function () {
 		this.device = null; 
     }
 	
-	MMXUSBService.prototype.addEventListener = function(type, listener, useCapture, wantsUntrusted) {
+	mmxusbservice.prototype.addEventListener = function(type, listener, useCapture, wantsUntrusted) {
 		return eventTarget.addEventListener(type, listener, useCapture, wantsUntrusted);
 	};
 
-	MMXUSBService.prototype.dispatchEvent = function(event) {
+	mmxusbservice.prototype.dispatchEvent = function(event) {
 		return eventTarget.dispatchEvent(event);
 	);
 	
-	MMXUSBService.prototype.removeEventListener = function(type, listener, useCapture) {
+	mmxusbservice.prototype.removeEventListener = function(type, listener, useCapture) {
 		return eventTarget.removeEventListener(type, listener, useCapture);
 	};
 
-	MMXUSBService.prototype.openDevice = function () {
+	mmxusbservice.prototype.openDevice = function () {
 		let deviceFilter = { vendorId: 0x0801, productId: 0x2020 };
 		let requestParams  = { filters: [deviceFilter] };
 
@@ -55,11 +55,11 @@ var MMXUSBService = (function () {
         console.log('done');
     };
 	
-	MMXUSBService.prototype.closeDevice = function () {
+	mmxusbservice.prototype.closeDevice = function () {
 
     };
 	
-	MMXUSBService.prototype.handleInputReport = function(data) {
+	mmxusbservice.prototype.handleInputReport = function(data) {
 		let responseValue = e.data;
 		console.log('Device Response: ' + responseValue);
 		console.log('Length: ' + responseValue.byteLength);
@@ -68,7 +68,7 @@ var MMXUSBService = (function () {
 		console.log('Device Response: ' + byteToHexString(databuffer));
 	};
 	
-    MMXUSBService.prototype.sendData = function (data) {
+    mmxusbservice.prototype.sendData = function (data) {
 		console.log('sendData: ' + data);						
         var packets = this.getPackets(data);
         for (var i = 0; i < packets.length; i++) {
@@ -83,7 +83,7 @@ var MMXUSBService = (function () {
         }
     };
 	
-    MMXUSBService.prototype.getPackets = function (data) {
+    mmxusbservice.prototype.getPackets = function (data) {
         if (data.length > this.SINGLE_DATA_SIZE) {
             return this.getMultiplePackets(data);
         }
@@ -94,7 +94,7 @@ var MMXUSBService = (function () {
         }
     };
 	
-    MMXUSBService.prototype.getSinglePacket = function (data) {
+    mmxusbservice.prototype.getSinglePacket = function (data) {
         var len = 2;
         if (data != null) {
             len += data.length;
@@ -115,7 +115,7 @@ var MMXUSBService = (function () {
         return result;
     };
 	
-    MMXUSBService.prototype.getMultiplePackets = function (data) {
+    mmxusbservice.prototype.getMultiplePackets = function (data) {
         var result = ([]);
         var p0 = (function (s) { var a = []; while (s-- > 0)
             a.push(0); return a; })(5 + this.START_PAYLOAD_SIZE);
@@ -176,7 +176,7 @@ var MMXUSBService = (function () {
         return result;
     };
 	
-    MMXUSBService.prototype.getLengthArray = function (nBytes, len) {
+    mmxusbservice.prototype.getLengthArray = function (nBytes, len) {
         var lengthArray = (function (s) { var a = []; while (s-- > 0)
             a.push(0); return a; })(nBytes);
         var shift = nBytes;
@@ -190,7 +190,7 @@ var MMXUSBService = (function () {
         return lengthArray;
     };
 	
-	MMXUSBService.prototype.byteToHexString = function(uint8arr) {
+	mmxusbservice.prototype.byteToHexString = function(uint8arr) {
 	  if (!uint8arr) {
 		return '';
 	  }
@@ -205,7 +205,7 @@ var MMXUSBService = (function () {
 	  return hexStr.toUpperCase();
 	};
 
-	MMXUSBService.prototype.hexStringToByte = function(str) {
+	mmxusbservice.prototype.hexStringToByte = function(str) {
 	  if (!str) {
 		return new Uint8Array();
 	  }
@@ -221,4 +221,4 @@ var MMXUSBService = (function () {
     return MMXUSBService;
 }());
 
-MMXUSBService["__class"] = "MMXUSBService";
+mmxusbservice["__class"] = "mmxusbservice";
