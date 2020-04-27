@@ -13,7 +13,7 @@
 			commandReport = hexStringToByte(commandString);
 
 			console.log('start');
-			service = new mmxusbservice.mmxusbservice();
+			service = mmxusbservice;
 					
 			console.log('open');
 			service.openDevice();
