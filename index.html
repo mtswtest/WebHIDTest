@@ -1,10 +1,29 @@
 <html>
 <head>
     <title>WebHID Test</title>
-    <script src="Script3.js"></script>
 	<script src="mmxusbservice.js"></script>
+	
 </head>
 <body>
-    <button id="ShowHIDDevices">Show HID Devices</button>
+    <button id="ShowHIDDevices" onclick="testDevice()">Show HID Devices</button>
+	
+	<script type="text/javascript">
+		function testDevice(event) {
+			commandString = '0011AA0081040100DF018407DF018103414243000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000';
+			commandReport = hexStringToByte(commandString);
+
+			console.log('start');
+			service = new mmxusbservice();
+					
+			console.log('open');
+			service.openDevice();
+			
+			console.log('send ' + commandString);
+			service.sendData(commandReport);
+			
+			console.log('done');
+		}
+
+	</script>
 </body>
 </html>
