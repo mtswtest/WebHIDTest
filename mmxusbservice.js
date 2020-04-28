@@ -35,7 +35,7 @@ var mmxusbservice = (function () {
 		console.log('Length: ' + responseValue.byteLength);
 				
 		databuffer = new Uint8Array(responseValue.buffer);
-		console.log('Device Response: ' + this.byteToHexString(databuffer));
+		console.log('Device Response: ' + byteToHexString(databuffer));
 	};
 	
 	mmxusbservice.prototype.openDevice = async function () {
