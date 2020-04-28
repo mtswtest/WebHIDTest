@@ -35,7 +35,7 @@ var mmxusbservice = (function () {
 		let responseValue = e.data;
 		console.log('Device Response: ' + responseValue);
 		console.log('Length: ' + responseValue.byteLength);
-				
+				 
 		databuffer = new Uint8Array(responseValue.buffer);
 		data = byteToHexString(databuffer);
 		console.log('Device Response: ' + data);
