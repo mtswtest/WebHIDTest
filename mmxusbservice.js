@@ -98,10 +98,10 @@ var mmxusbservice = (function () {
         if (data != null) {
             len += data.length;
         }
-        //var result = (function (s) { var a = []; while (s-- > 0)
-            //a.push(0); return a; })(len);
+        var result = (function (s) { var a = []; while (s-- > 0)
+        a.push(0); return a; })(len);
 		
-		Uint8Array result = new Uint8Array(len);
+		//Uint8Array result = new Uint8Array(len);
 		
         result[0] = this.PACKET_TYPE_SINGLE_DATA;
         result[1] = (data.length | 0);
@@ -114,8 +114,8 @@ var mmxusbservice = (function () {
             for (var i = 0; i < size; i++)
                 dstPts[dstOff++] = tmp[i];
         } })(data, 0, result, 2, data.length);
-        //return result;
-		return new Uint8Array(result);
+        return result;
+		//return new Uint8Array(result);
     };
 	
     mmxusbservice.prototype.getMultiplePackets = function (data) {
