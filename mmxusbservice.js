@@ -179,8 +179,7 @@ var mmxusbservice = (function () {
                 dstPts[dstOff++] = srcPts[srcOff++];
         }
         else {
-            var tmp = srcPts.slice(srcOff, srcOff + size);
-            for (var i_3 = 0; i_3 < size; i_3++)
+            var tmp = srcPts.slice(srcOff, srcOff + size); 
                 dstPts[dstOff++] = tmp[i_3];
         } })(data, i, p1, 2, data.length - i);
         /* add */ (result.push(new Uint8Array(p1)) > 0);
