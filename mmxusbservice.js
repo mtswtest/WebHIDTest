@@ -41,11 +41,11 @@ var mmxusbservice = (function () {
 		console.log('Device Response: ' + data);
 		
 		//if (this.onData != null)
-			await this.eventcallback('data', data);
+			await this.callback('data', data);
 	};
 	
-	mmxusbservice.prototype.openDevice = async function (eventcallback) {
-		this.eventcallback = eventcallback;
+	mmxusbservice.prototype.openDevice = async function (callback) {
+		this.callback = callback;
 		
 		let deviceFilter = { vendorId: 0x0801, productId: 0x2020 };
 		let requestParams  = { filters: [deviceFilter] };
@@ -200,14 +200,12 @@ async function testDevice() {
 
 	console.log('start');
 	service = new mmxusbservice();
-			
-			
-	service.onData = async function(type, data) {
-		console.log('On ' + type + ': ' + data);
-	};
-			
+						
 	console.log('open');
-	await service.openDevice();
+	await service.openDevice(async function(type, data) {
+			console.log('On ' + type + ': ' + data);
+		}
+	);
 	
 	console.log('send ' + commandString);
 	service.sendData(commandReport);
