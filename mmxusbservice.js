@@ -240,7 +240,7 @@ function hexStringToByte(str) {
 }
 	
 async function testDevice() {
-	commandString = '0011AA0081040100DF018407DF018103414243000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000';
+	commandString = '0011AA0081040100DF018407DF018103414243';
 	commandReport = hexStringToByte(commandString);
 
 	console.log('start');
