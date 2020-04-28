@@ -28,7 +28,16 @@ var mmxusbservice = (function () {
 	mmxusbservice.prototype.removeEventListener = function(type, listener, useCapture) {
 		return eventTarget.removeEventListener(type, listener, useCapture);
 	};
-
+	
+	mmxusbservice.prototype.handleInputReport = function(e) {
+		let responseValue = e.data;
+		console.log('Device Response: ' + responseValue);
+		console.log('Length: ' + responseValue.byteLength);
+				
+		databuffer = new Uint8Array(responseValue.buffer);
+		console.log('Device Response: ' + this.byteToHexString(databuffer));
+	};
+	
 	mmxusbservice.prototype.openDevice = async function () {
 		let deviceFilter = { vendorId: 0x0801, productId: 0x2020 };
 		let requestParams  = { filters: [deviceFilter] };
@@ -57,15 +66,6 @@ var mmxusbservice = (function () {
 	mmxusbservice.prototype.closeDevice = function () {
 
     };
-	
-	mmxusbservice.prototype.handleInputReport = function(inputreport) {
-		let responseValue = inputreport.data;
-		console.log('Device Response: ' + responseValue);
-		console.log('Length: ' + responseValue.byteLength);
-				
-		databuffer = new Uint8Array(responseValue.buffer);
-		console.log('Device Response: ' + this.byteToHexString(databuffer));
-	};
 	
     mmxusbservice.prototype.sendData = function (data) {
 		console.log('sendData: ' + data);						
