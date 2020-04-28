@@ -217,7 +217,7 @@ var mmxusbservice = (function () {
 	  return new Uint8Array(a);
 	};
 	
-    return MMXUSBService;
+    return mmxusbservice;
 }());
 
 mmxusbservice["__class"] = "mmxusbservice";
