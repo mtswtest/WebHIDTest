@@ -185,7 +185,8 @@ var mmxusbservice = (function () {
 mmxusbservice["__class"] = "mmxusbservice";
 	
 async function testDevice() {
-	commandString = 'AA0081040100DF018407DF018103414243';
+	//commandString = 'AA0081040100DF018407DF018103414243';
+	commandString = 'AA00810401011001843F1001820178A309810101820101830101840200008629A4279C01009F02060000000015009F03060000000000005F2A0208405F3601029F150200009F530100';
 	commandReport = hexStringToByte(commandString);
 
 	console.log('start');
