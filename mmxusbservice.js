@@ -16,7 +16,7 @@ var mmxusbservice = (function () {
 		
 		this.device = null; 
 		
-		this.callback = null;
+		this.eventcallback = null;
     };
 	
 	mmxusbservice.prototype.addEventListener = function(type, listener, useCapture, wantsUntrusted) {
@@ -41,11 +41,11 @@ var mmxusbservice = (function () {
 		console.log('Device Response: ' + data);
 		
 		//if (this.onData != null)
-			await this.callback('data', data);
+			await this.eventcallback('data', data);
 	};
 	
-	mmxusbservice.prototype.openDevice = async function (callback) {
-		this.callback = callback;
+	mmxusbservice.prototype.openDevice = async function (eventcallback) {
+		this.eventcallback = eventcallback;
 		
 		let deviceFilter = { vendorId: 0x0801, productId: 0x2020 };
 		let requestParams  = { filters: [deviceFilter] };
