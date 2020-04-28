@@ -2,7 +2,7 @@
 var mmxusbservice = (function () {
 	
     function mmxusbservice() {
-        this.PACKET_TYPE_SINGLE_DATA = ((Uint8) 0); 
+        this.PACKET_TYPE_SINGLE_DATA = 0; 
         this.PACKET_TYPE_START_DATA = 1;
         this.PACKET_TYPE_CONTINUE_DATA = 2;
         this.PACKET_TYPE_END_DATA = 3;
