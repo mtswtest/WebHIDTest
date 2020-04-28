@@ -2,15 +2,15 @@
 var mmxusbservice = (function () {
 	
     function mmxusbservice() {
-        this.PACKET_TYPE_SINGLE_DATA = 0;
-        this.PACKET_TYPE_START_DATA = 1;
-        this.PACKET_TYPE_CONTINUE_DATA = 2;
-        this.PACKET_TYPE_END_DATA = 3;
-        this.PACKET_TYPE_CANCEL = 4;
-        this.START_PAYLOAD_SIZE = 59;
-        this.PACKET_CONTINUE_DATA_SIZE = 61;
-        this.END_DATA_SIZE = 62;
-        this.SINGLE_DATA_SIZE = 62;
+        Uint8 this.PACKET_TYPE_SINGLE_DATA = 0;
+        Uint8 this.PACKET_TYPE_START_DATA = 1;
+        Uint8 this.PACKET_TYPE_CONTINUE_DATA = 2;
+        Uint8 this.PACKET_TYPE_END_DATA = 3;
+        Uint8 this.PACKET_TYPE_CANCEL = 4;
+        Uint8 this.START_PAYLOAD_SIZE = 59;
+        Uint8 this.PACKET_CONTINUE_DATA_SIZE = 61;
+        Uint8 this.END_DATA_SIZE = 62;
+        Uint8 this.SINGLE_DATA_SIZE = 62;
 		
 		this.eventTarget = document.createDocumentFragment();
 		
@@ -58,13 +58,13 @@ var mmxusbservice = (function () {
 
     };
 	
-	mmxusbservice.prototype.handleInputReport = function(data) {
-		let responseValue = e.data;
+	mmxusbservice.prototype.handleInputReport = function(inputreport) {
+		let responseValue = inputreport.data;
 		console.log('Device Response: ' + responseValue);
 		console.log('Length: ' + responseValue.byteLength);
 				
 		databuffer = new Uint8Array(responseValue.buffer);
-		console.log('Device Response: ' + byteToHexString(databuffer));
+		console.log('Device Response: ' + this.byteToHexString(databuffer));
 	};
 	
     mmxusbservice.prototype.sendData = function (data) {
@@ -98,8 +98,11 @@ var mmxusbservice = (function () {
         if (data != null) {
             len += data.length;
         }
-        var result = (function (s) { var a = []; while (s-- > 0)
-            a.push(0); return a; })(len);
+        //var result = (function (s) { var a = []; while (s-- > 0)
+            //a.push(0); return a; })(len);
+		
+		Uint8Array result = new Uint8Array(len);
+		
         result[0] = this.PACKET_TYPE_SINGLE_DATA;
         result[1] = (data.length | 0);
         /* arraycopy */ (function (srcPts, srcOff, dstPts, dstOff, size) { if (srcPts !== dstPts || dstOff >= srcOff + size) {
