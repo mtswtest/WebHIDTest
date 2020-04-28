@@ -16,7 +16,9 @@ var mmxusbservice = (function () {
 		
 		this.device = null; 
 		
-		this.callback = null;
+		this.callback = async function(e) {
+			console.log('Test Event: ' + e);
+		};	
     };
 	
 	mmxusbservice.prototype.addEventListener = function(type, listener, useCapture, wantsUntrusted) {
@@ -203,9 +205,9 @@ async function testDevice() {
 	//service.addEventListener('data', async function(e) {
 	//		console.log('Event: ' + e);
     //});	
-	service.callback = async function(e) {
-			console.log('Event: ' + e);
-		};	
+	//service.callback = async function(e) {
+			//console.log('Event: ' + e);
+		//};	
 												
 	console.log('open');
 	await service.openDevice();
