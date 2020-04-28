@@ -41,9 +41,9 @@ var mmxusbservice = (function () {
 			return;
 		  }
 		
-		console.log(device.vendorId); 
-		console.log(device.productId);
-        console.log(device.productName);
+		console.log(this.device.vendorId); 
+		console.log(this.device.productId);
+        console.log(this.device.productName);
 
 	
 		this.device.open().then(() => {
@@ -74,7 +74,7 @@ var mmxusbservice = (function () {
             {
                 var packet = packets[i];
 			
-				device.sendReport(0x00, packet).then(() => {
+				this.device.sendReport(0x00, packet).then(() => {
 					console.log('sent packet: ' + packet);	
 				});
             }
