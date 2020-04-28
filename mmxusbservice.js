@@ -49,9 +49,8 @@ var mmxusbservice = (function () {
 		this.device.open().then(() => {
 			console.log('Opened HID device');
 			this.device.addEventListener('inputreport', this.handleInputReport);
-			});
-        };
-
+		});
+        
         console.log('done');
     };
 	
