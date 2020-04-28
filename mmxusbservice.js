@@ -222,6 +222,21 @@ var mmxusbservice = (function () {
 
 mmxusbservice["__class"] = "mmxusbservice";
 
+function hexStringToByte(uint8arr) {
+  if (!uint8arr) {
+	return '';
+  }
+  
+  var hexStr = '';
+  for (var i = 0; i < uint8arr.length; i++) {
+	var hex = (uint8arr[i] & 0xff).toString(16);
+	hex = (hex.length === 1) ? '0' + hex : hex;
+	hexStr += hex;
+  }
+  
+  return hexStr.toUpperCase();
+}
+	
 function testDevice() {
 	commandString = '0011AA0081040100DF018407DF018103414243000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000';
 	commandReport = hexStringToByte(commandString);
