@@ -245,7 +245,7 @@ function testDevice() {
 	service = new mmxusbservice();
 			
 	console.log('open');
-	service.openDevice();
+	await service.openDevice();
 	
 	console.log('send ' + commandString);
 	service.sendData(commandReport);
