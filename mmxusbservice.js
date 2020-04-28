@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', event => {
 	
 
     button.addEventListener('click', async () => {
+			console.log('OnClick');
 		testDevice();
     })
 
