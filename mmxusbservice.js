@@ -1,31 +1,4 @@
 
-document.addEventListener('DOMContentLoaded', event => {
-    let button = document.getElementById('ShowHIDDevices')
-	
-
-    button.addEventListener('click', async () => {
-			console.log('OnClick');
-		testDevice();
-    })
-
-})
-
-function testDevice() {
-	commandString = '0011AA0081040100DF018407DF018103414243000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000';
-	commandReport = hexStringToByte(commandString);
-
-	console.log('start');
-	service = new mmxusbservice();
-			
-	console.log('open');
-	service.openDevice();
-	
-	console.log('send ' + commandString);
-	service.sendData(commandReport);
-	
-	console.log('done');
-}
-
 var mmxusbservice = (function () {
 	
     function mmxusbservice() {
@@ -249,3 +222,31 @@ var mmxusbservice = (function () {
 }());
 
 mmxusbservice["__class"] = "mmxusbservice";
+
+function testDevice() {
+	commandString = '0011AA0081040100DF018407DF018103414243000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000';
+	commandReport = hexStringToByte(commandString);
+
+	console.log('start');
+	service = new mmxusbservice();
+			
+	console.log('open');
+	service.openDevice();
+	
+	console.log('send ' + commandString);
+	service.sendData(commandReport);
+	
+	console.log('done');
+}
+
+document.addEventListener('DOMContentLoaded', event => {
+    let button = document.getElementById('ShowHIDDevices')
+	
+
+    button.addEventListener('click', async () => {
+			console.log('OnClick');
+		testDevice();
+    })
+
+})
+
