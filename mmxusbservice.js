@@ -123,7 +123,7 @@ var mmxusbservice = (function () {
         var p0 = (function (s) { var a = []; while (s-- > 0)
             a.push(0); return a; })(5 + this.START_PAYLOAD_SIZE);
         p0[0] = this.PACKET_TYPE_START_DATA;
-        var p0Len = this.getLengthArray(4, data.length);
+        var p0Len = getLengthArray(4, data.length);
         p0[1] = p0Len[0];
         p0[2] = p0Len[1];
         p0[3] = p0Len[2];
@@ -144,7 +144,7 @@ var mmxusbservice = (function () {
             {
                 var pi = (function (s) { var a = []; while (s-- > 0)
                     a.push(0); return a; })(3 + this.PACKET_CONTINUE_DATA_SIZE);
-                var piLen = this.getLengthArray(2, seq);
+                var piLen = getLengthArray(2, seq);
                 pi[0] = this.PACKET_TYPE_CONTINUE_DATA;
                 pi[1] = piLen[0];
                 pi[2] = piLen[1];
@@ -178,7 +178,7 @@ var mmxusbservice = (function () {
         /* add */ (result.push(p1) > 0);
         return result;
     };
-	
+/*	
     mmxusbservice.prototype.getLengthArray = function (nBytes, len) {
         var lengthArray = (function (s) { var a = []; while (s-- > 0)
             a.push(0); return a; })(nBytes);
@@ -220,24 +220,11 @@ var mmxusbservice = (function () {
 	  
 	  return new Uint8Array(a);
 	};
-	
+*/	
     return mmxusbservice; 
 }());
 
 mmxusbservice["__class"] = "mmxusbservice";
-
-function hexStringToByte(str) {
-	  if (!str) {
-		return new Uint8Array();
-	  }
-	  
-	  var a = [];
-	  for (var i = 0, len = str.length; i < len; i+=2) {
-		a.push(parseInt(str.substr(i,2),16));
-	  }
-	  
-	  return new Uint8Array(a);
-}
 	
 async function testDevice() {
 	commandString = '0011AA0081040100DF018407DF018103414243';
