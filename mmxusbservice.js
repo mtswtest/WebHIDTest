@@ -15,6 +15,8 @@ var mmxusbservice = (function () {
 		this.eventTarget = document.createDocumentFragment();
 		
 		this.device = null; 
+		
+		this.onData = null;
     };
 	
 	mmxusbservice.prototype.addEventListener = function(type, listener, useCapture, wantsUntrusted) {
@@ -35,7 +37,11 @@ var mmxusbservice = (function () {
 		console.log('Length: ' + responseValue.byteLength);
 				
 		databuffer = new Uint8Array(responseValue.buffer);
-		console.log('Device Response: ' + byteToHexString(databuffer));
+		data = byteToHexString(databuffer);
+		console.log('Device Response: ' + data);
+		
+		if (this.onData != null)
+			this.onData(data);
 	};
 	
 	mmxusbservice.prototype.openDevice = async function () {
@@ -192,6 +198,11 @@ async function testDevice() {
 
 	console.log('start');
 	service = new mmxusbservice();
+			
+			
+	service.onData = async function(data) {
+		console.log('On Data: ' + data);
+	};
 			
 	console.log('open');
 	await service.openDevice();
