@@ -12,9 +12,11 @@ var mmxusbservice = (function () {
         this.END_DATA_SIZE = 62;
         this.SINGLE_DATA_SIZE = 62;
 		
-		this.eventTarget = document.createDocumentFragment();
+		//this.eventTarget = document.createDocumentFragment();
 		
 		this.device = null; 
+		
+		this.callback = null;
     };
 	
 	mmxusbservice.prototype.addEventListener = function(type, listener, useCapture, wantsUntrusted) {
@@ -38,7 +40,8 @@ var mmxusbservice = (function () {
 		data = byteToHexString(databuffer);
 		console.log('Device Response: ' + data);	
 		
-		this.dispatchEvent(new Event('data', {bubbles: true}));
+		//this.dispatchEvent(new Event('data', {bubbles: true}));
+		this.callback.call(this, 'data');
 	};
 	
 	mmxusbservice.prototype.openDevice = async function (callback) {
@@ -197,9 +200,12 @@ async function testDevice() {
 	console.log('start');
 	service = new mmxusbservice();
 						
-	service.addEventListener('data', async function(e) {
+	//service.addEventListener('data', async function(e) {
+	//		console.log('Event: ' + e);
+    //});	
+	service.callback = async function(e) {
 			console.log('Event: ' + e);
-    });					
+		};	
 												
 	console.log('open');
 	await service.openDevice();
