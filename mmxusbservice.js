@@ -202,10 +202,9 @@ async function testDevice() {
 	service = new mmxusbservice();
 						
 	console.log('open');
-	await service.openDevice(async function(type, data) {
+	await service.openDevice(async (type, data) => {
 			console.log('On ' + type + ': ' + data);
-		}
-	);
+    })
 	
 	console.log('send ' + commandString);
 	service.sendData(commandReport);
