@@ -40,8 +40,8 @@ var mmxusbservice = (function () {
 		data = byteToHexString(databuffer);
 		console.log('Device Response: ' + data);
 		
-		if (this.onData != null)
-			this.onData(data);
+		//if (this.onData != null)
+			await this.onData(data);
 	};
 	
 	mmxusbservice.prototype.openDevice = async function () {
