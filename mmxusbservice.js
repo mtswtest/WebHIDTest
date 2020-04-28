@@ -237,7 +237,7 @@ function hexStringToByte(uint8arr) {
   return hexStr.toUpperCase();
 }
 	
-function testDevice() {
+async function testDevice() {
 	commandString = '0011AA0081040100DF018407DF018103414243000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000';
 	commandReport = hexStringToByte(commandString);
 
