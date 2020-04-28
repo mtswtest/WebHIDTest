@@ -28,7 +28,7 @@ var mmxusbservice = (function () {
 	mmxusbservice.prototype.removeEventListener = function(type, listener, useCapture) {
 		return eventTarget.removeEventListener(type, listener, useCapture);
 	};
-	
+	 
 	mmxusbservice.prototype.handleInputReport = function(e) {
 		let responseValue = e.data;
 		console.log('Device Response: ' + responseValue);
