@@ -73,9 +73,9 @@ var mmxusbservice = (function () {
         for (var i = 0; i < packets.length; i++) {
             {
                 var packet = packets[i];
-			
+				console.log('sending packet: ' + packet);	
 				this.device.sendReport(0x00, packet).then(() => {
-					console.log('sent packet: ' + packet);	
+					console.log('Packet sent');;	
 				});
             }
             ;
