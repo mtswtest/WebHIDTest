@@ -114,8 +114,8 @@ var mmxusbservice = (function () {
             for (var i = 0; i < size; i++)
                 dstPts[dstOff++] = tmp[i];
         } })(data, 0, result, 2, data.length);
-        return result;
-		//return new Uint8Array(result);
+        //return result;
+		return new Uint8Array(result);
     };
 	
     mmxusbservice.prototype.getMultiplePackets = function (data) {
