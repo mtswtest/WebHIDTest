@@ -18,15 +18,15 @@ var mmxusbservice = (function () {
     };
 	
 	mmxusbservice.prototype.addEventListener = function(type, listener, useCapture, wantsUntrusted) {
-		return eventTarget.addEventListener(type, listener, useCapture, wantsUntrusted);
+		return this.eventTarget.addEventListener(type, listener, useCapture, wantsUntrusted);
 	};
 
 	mmxusbservice.prototype.dispatchEvent = function(event) {
-		return eventTarget.dispatchEvent(event);
+		return this.eventTarget.dispatchEvent(event);
 	};
 	
 	mmxusbservice.prototype.removeEventListener = function(type, listener, useCapture) {
-		return eventTarget.removeEventListener(type, listener, useCapture);
+		return this.eventTarget.removeEventListener(type, listener, useCapture);
 	};
 	 
 	mmxusbservice.prototype.handleInputReport = async function(e) {
