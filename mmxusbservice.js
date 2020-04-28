@@ -217,7 +217,7 @@ var mmxusbservice = (function () {
 	  return new Uint8Array(a);
 	};
 	
-    return mmxusbservice;
+    return mmxusbservice; 
 }());
 
 mmxusbservice["__class"] = "mmxusbservice";
