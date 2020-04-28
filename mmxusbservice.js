@@ -41,7 +41,7 @@ var mmxusbservice = (function () {
 		console.log('Device Response: ' + data);	
 		
 		//this.dispatchEvent(new Event('data', {bubbles: true}));
-		this.callback.call(this, 'data');
+		this.callback('ondata');
 	};
 	
 	mmxusbservice.prototype.openDevice = async function (callback) {
