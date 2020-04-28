@@ -82,7 +82,7 @@ var mmxusbservice = (function () {
         }
     };
 	
-    mmxusbservice.prototype.getPackets = function (data) {
+    mmxusbservice.prototype.getPackets = function (data) { 
         if (data.length > this.SINGLE_DATA_SIZE) {
             return this.getMultiplePackets(data);
         }
