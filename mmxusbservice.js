@@ -137,7 +137,7 @@ var mmxusbservice = (function () {
             for (var i_1 = 0; i_1 < size; i_1++)
                 dstPts[dstOff++] = tmp[i_1];
         } })(data, 0, p0, 5, this.START_PAYLOAD_SIZE);
-        /* add */ (result.push(p0) > 0);
+        /* add */ (result.push(new Uint8Array(p0)) > 0);
         var seq = 1;
         var i = this.START_PAYLOAD_SIZE;
         for (; i < data.length - this.END_DATA_SIZE; i += this.PACKET_CONTINUE_DATA_SIZE) {
@@ -157,7 +157,7 @@ var mmxusbservice = (function () {
                     for (var i_2 = 0; i_2 < size; i_2++)
                         dstPts[dstOff++] = tmp[i_2];
                 } })(data, i, pi, 3, this.PACKET_CONTINUE_DATA_SIZE);
-                /* add */ (result.push(pi) > 0);
+                /* add */ (result.push(new Uint8Array(pi)) > 0);
                 seq++;
             }
             ;
@@ -175,7 +175,7 @@ var mmxusbservice = (function () {
             for (var i_3 = 0; i_3 < size; i_3++)
                 dstPts[dstOff++] = tmp[i_3];
         } })(data, i, p1, 2, data.length - i);
-        /* add */ (result.push(p1) > 0);
+        /* add */ (result.push(new Uint8Array(p1)) > 0);
         return result;
     };
 
