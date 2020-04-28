@@ -29,7 +29,7 @@ var mmxusbservice = (function () {
 		return eventTarget.removeEventListener(type, listener, useCapture);
 	};
 
-	mmxusbservice.prototype.openDevice = async function () {
+	async mmxusbservice.prototype.openDevice = async function () {
 		let deviceFilter = { vendorId: 0x0801, productId: 0x2020 };
 		let requestParams  = { filters: [deviceFilter] };
 
