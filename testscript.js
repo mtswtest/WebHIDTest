@@ -8,8 +8,6 @@ document.addEventListener('DOMContentLoaded', event => {
 
 
         console.log('done');
-		
-
     })
 
 })
