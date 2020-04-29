@@ -56,6 +56,8 @@ var mmxusbservice = (function () {
 		this.callback = async function(e) {
 			console.log('Test Event: ' + e);
 		};	
+		
+				this.callback('Test 123');
     };
 	
 	mmxusbservice.prototype.addEventListener = function(type, listener, useCapture, wantsUntrusted) {
