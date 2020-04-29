@@ -71,6 +71,12 @@ var mmxusbservice = (function () {
 	mmxusbservice.prototype.removeEventListener = function(type, listener, useCapture) {
 		return this.eventTarget.removeEventListener(type, listener, useCapture);
 	};
+	
+	mmxusbservice.prototype.processData = function(data) {
+				console.log('processData: ' + data);	
+		//this.dispatchEvent(new Event('data', {bubbles: true}));
+		this.callback('ondata');
+	};
 	 
 	mmxusbservice.prototype.handleInputReport = function(e) {
 		let responseValue = e.data;
@@ -81,8 +87,7 @@ var mmxusbservice = (function () {
 		data = byteToHexString(databuffer);
 		console.log('Device Response: ' + data);	
 		
-		//this.dispatchEvent(new Event('data', {bubbles: true}));
-		this.callback('ondata');
+		this.processData(data);
 	};
 	
 	mmxusbservice.prototype.openDevice = async function (callback) {
