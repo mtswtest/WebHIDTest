@@ -120,6 +120,8 @@ var mmxusbservice = (function () {
 					databuffer = new Uint8Array(responseValue.buffer);
 					data = byteToHexString(databuffer);
 					console.log('Device Response: ' + data);
+					
+							this.processData(data);
 			    }
 			);
 		});
