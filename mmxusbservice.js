@@ -103,8 +103,7 @@ var mmxusbservice = (function () {
 			console.warn('No device access granted', error);
 			return;
 		  }
-		
-		console.log(this.device.vendorId); 
+		 
 		console.log(this.device.productId);
         console.log(this.device.productName);
 
