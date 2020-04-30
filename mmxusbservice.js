@@ -69,7 +69,7 @@ var mmxusbservice = (function () {
 	};
 	
 	mmxusbservice.prototype.removeEventListener = function(type, listener, useCapture) {
-		return this.eventTarget.removeEventListener(type, listener, useCapture);
+		return this.eventTarget.removeEventListener(type, listener, useCapture); 
 	};
 	
 	mmxusbservice.prototype.processData = function(data) {
