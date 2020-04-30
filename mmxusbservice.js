@@ -35,7 +35,7 @@ async function testDevice() {
 	
 	console.log('done');
 }
-
+ 
 var mmxusbservice = (function () {
 	
     function mmxusbservice() {
