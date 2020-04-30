@@ -22,9 +22,9 @@ async function testDevice() {
 	//service.addEventListener('data', async function(e) {
 	//		console.log('Event: ' + e);
     //});	
-	//service.callback = async function(e) {
-			//console.log('Event: ' + e);
-		//};	
+	service.callback = async function(e) {
+			console.log('Device Event: ' + e);
+		};	
 												
 	console.log('open');
 	await service.openDevice();
