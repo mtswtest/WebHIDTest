@@ -38,6 +38,7 @@ async function testDevice() {
  
 var mmxusbservice = (function () {
 	var context = null;
+	var callback = null;
 	
     function mmxusbservice() {
         this.PACKET_TYPE_SINGLE_DATA = 0; 
@@ -54,7 +55,7 @@ var mmxusbservice = (function () {
 		
 		this.device = null; 
 		
-		this.callback = async function(e) {
+		callback = async function(e) {
 			console.log('Test Event: ' + e);
 		};	
 		
@@ -77,7 +78,7 @@ var mmxusbservice = (function () {
 	mmxusbservice.prototype.processData = function(data) {
 				console.log('processData: ' + data);	
 		//this.dispatchEvent(new Event('data', {bubbles: true}));
-		this.callback('ondata');
+		callback('ondata');
 	};
 	 
 	var handleInputReport = function(e) {
