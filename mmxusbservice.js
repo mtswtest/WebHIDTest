@@ -57,7 +57,7 @@ var mmxusbservice = (function () {
 		
 		callback = async function(e) {
 			console.log('Test Event: ' + e);
-		};	
+		};	 
 		
 				callback('Test 123');
 				context = this;
