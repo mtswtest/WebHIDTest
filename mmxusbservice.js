@@ -87,7 +87,7 @@ var mmxusbservice = (function () {
 		data = byteToHexString(databuffer);
 		console.log('Device Response: ' + data);	
 		
-				mmxusbservice.processData(data);
+		mmxusbservice.processData(data);
 	};
 	
 	mmxusbservice.prototype.openDevice = async function (callback) {
