@@ -79,6 +79,7 @@ var mmxusbservice = (function () {
 				console.log('processData: ' + data);	
 		//this.dispatchEvent(new Event('data', {bubbles: true}));
 		callback('ondata');
+				context.callback(data);
 	};
 	 
 	var handleInputReport = function(e) {
