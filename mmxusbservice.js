@@ -22,9 +22,13 @@ async function testDevice() {
 	//service.addEventListener('data', async function(e) {
 	//		console.log('Event: ' + e);
     //});	
-	service.callback = async function(e) {
+	//service.callback = async function(e) {
+			//console.log('Device Event: ' + e);
+		//};	
+		
+	service.setEventCallback(function(e) {
 			console.log('Device Event: ' + e);
-		};	
+		});	
 												
 	console.log('open');
 	await service.openDevice();
@@ -39,6 +43,7 @@ async function testDevice() {
 var mmxusbservice = (function () {
 	var context = null;
 	var callback = null;
+	var eventCallback = null;
 	
     function mmxusbservice() {
         this.PACKET_TYPE_SINGLE_DATA = 0; 
@@ -63,6 +68,10 @@ var mmxusbservice = (function () {
 				context = this;
     };
 	
+	mmxusbservice.prototype.setEventCallback = function(cb) {
+		eventCallback = cb;
+	};
+	
 	mmxusbservice.prototype.addEventListener = function(type, listener, useCapture, wantsUntrusted) {
 		return this.eventTarget.addEventListener(type, listener, useCapture, wantsUntrusted);
 	};
@@ -79,7 +88,7 @@ var mmxusbservice = (function () {
 				console.log('processData: ' + data);	
 		//this.dispatchEvent(new Event('data', {bubbles: true}));
 		callback('ondata');
-				context.callback(data);
+				eventCallback(data);
 	};
 	 
 	var handleInputReport = function(e) {
