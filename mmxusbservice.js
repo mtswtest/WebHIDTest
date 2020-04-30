@@ -37,6 +37,7 @@ async function testDevice() {
 }
  
 var mmxusbservice = (function () {
+	var context = null;
 	
     function mmxusbservice() {
         this.PACKET_TYPE_SINGLE_DATA = 0; 
@@ -58,6 +59,7 @@ var mmxusbservice = (function () {
 		};	
 		
 				this.callback('Test 123');
+				context = this;
     };
 	
 	mmxusbservice.prototype.addEventListener = function(type, listener, useCapture, wantsUntrusted) {
@@ -120,7 +122,7 @@ var mmxusbservice = (function () {
 					data = byteToHexString(databuffer);
 					console.log('Device Response: ' + data);
 					
-							mmxusbservice.processData(data);
+							context.processData(data);
 			    }
 			);
 		});
