@@ -59,7 +59,7 @@ var mmxusbservice = (function () {
 			console.log('Test Event: ' + e);
 		};	
 		
-				this.callback('Test 123');
+				callback('Test 123');
 				context = this;
     };
 	
