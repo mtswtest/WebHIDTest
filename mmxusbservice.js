@@ -110,9 +110,18 @@ var mmxusbservice = (function () {
 
 	
 		await this.device.open().then(() => {
-			console.log('Opened HID device'); 
-			this.handleInputreport = handleInputReport; 
-			this.device.addEventListener('inputreport', this.handleInputReport);
+			console.log('Opened HID device');
+
+			this.device.addEventListener('inputreport', function(e) {
+					let responseValue = e.data;
+					console.log('Device Response: ' + responseValue);
+					console.log('Length: ' + responseValue.byteLength);
+
+					databuffer = new Uint8Array(responseValue.buffer);
+					data = byteToHexString(databuffer);
+					console.log('Device Response: ' + data);
+			    }
+			);
 		});
          
         console.log('done');
