@@ -111,7 +111,7 @@ var mmxusbservice = (function () {
 	
 		await this.device.open().then(() => {
 			console.log('Opened HID device');
-			this.handleInputreport = handInputReport; 
+			this.handleInputreport = handleInputReport; 
 			this.device.addEventListener('inputreport', this.handleInputReport);
 		});
          
