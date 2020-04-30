@@ -48,7 +48,7 @@ var mmxusbservice = (function () {
         this.PACKET_TYPE_CANCEL = 4;
         this.START_PAYLOAD_SIZE = 59;
         this.PACKET_CONTINUE_DATA_SIZE = 61;
-        this.END_DATA_SIZE = 62;
+        this.END_DATA_SIZE = 62; 
         this.SINGLE_DATA_SIZE = 62;
 		
 		//this.eventTarget = document.createDocumentFragment();
